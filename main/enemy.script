@@ -1,13 +1,26 @@
 local speed = 100
+local dev_change = 4
+local zaxis = vmath.vector3(0, 0, 1)
 
 function init(self)
 	self.direction = vmath.vector3()
+	self.deviation = vmath.quat()
+	self.timer = dev_change
 end
 
 function update(self, dt)
+	self.timer = self.timer + dt
+	if self.timer > math.random()*dev_change then
+		local rand_angle = (math.random()-0.5)*2
+		self.deviation = vmath.quat_axis_angle(zaxis, rand_angle)
+		self.timer = 0
+	end
+	
 	self.direction = go.get_position("/player") - go.get_position()
 	if vmath.length_sqr(self.direction) > 1 then
 		self.direction = vmath.normalize(self.direction)
 	end
+	self.direction = vmath.rotate(self.deviation, self.direction)
+	
 	go.set_position(go.get_position() + self.direction*speed*dt)
 end
