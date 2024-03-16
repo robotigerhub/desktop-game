@@ -1,6 +1,7 @@
+local speed = 200
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	self.speed = 200
 	self.direction = vmath.vector3()
 end
 
@@ -21,7 +22,7 @@ function update(self, dt)
 		self.direction = vmath.normalize(self.direction)
 	end
 	
-	go.set_position(go.get_position() + self.direction*self.speed*dt)
+	go.set_position(go.get_position() + self.direction*speed*dt)
 
 	self.direction.x = 0
 	self.direction.y = 0
