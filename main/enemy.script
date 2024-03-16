@@ -9,6 +9,7 @@ function init(self)
 end
 
 function update(self, dt)
+	-- TODO: compare with timer.delay()
 	self.timer = self.timer + dt
 	if self.timer > math.random()*dev_change then
 		local rand_angle = (math.random()-0.5)*2
