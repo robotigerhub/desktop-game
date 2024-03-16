@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"logo_blue\"\n"
+  data: "default_animation: \"logo\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -36,8 +36,8 @@ embedded_components {
     w: 1.0
   }
   scale {
-    x: 0.1
-    y: 0.1
+    x: 0.5
+    y: 0.5
     z: 1.0
   }
 }
