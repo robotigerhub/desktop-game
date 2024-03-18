@@ -1,32 +1,33 @@
 local speed = 100
 local z_axis = vmath.vector3(0, 0, 1)
+local max_dev_change_delay = 4
 
 function init(self)
 	self.direction = vmath.vector3()
 	self.deviation = vmath.quat()
 	self.correction = vmath.vector3()
 	set_new_deviation(self)
-	set_new_direction(self)
 end
 
 function update(self, dt)
-	set_new_direction(self)
+	self.direction = get_player_direction()
+	self.direction = vmath.rotate(self.deviation, self.direction)
 	go.set_position(go.get_position() + self.direction*speed*dt)
 	self.correction = vmath.vector3()
 end
 
 function set_new_deviation(self)
-	local rand_angle = (math.random()-0.5)*2
+	local rand_angle = (math.random()-0.5)*2  -- [-1,1) rad
 	self.deviation = vmath.quat_axis_angle(z_axis, rand_angle)
-	timer.delay(math.random()*4, false, set_new_deviation)
+	timer.delay(math.random()*max_dev_change_delay, false, set_new_deviation)
 end
 
-function set_new_direction(self)
-	self.direction = go.get_position("/player") - go.get_position()
-	if vmath.length_sqr(self.direction) > 1 then
-		self.direction = vmath.normalize(self.direction)
+function get_player_direction()
+	local direction = go.get_position("/player") - go.get_position()
+	if vmath.length_sqr(direction) > 0 then
+		direction = vmath.normalize(direction)
 	end
-	self.direction = vmath.rotate(self.deviation, self.direction)
+	return direction
 end
 
 function on_message(self, message_id, message, sender)
