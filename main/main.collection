@@ -1,10 +1,10 @@
 name: "main"
 instances {
   id: "enemy"
-  prototype: "/main/enemy.go"
+  prototype: "/enemy/enemy.go"
   position {
-    x: 252.0
-    y: 186.0
+    x: 166.0
+    y: 155.0
     z: 0.0
   }
   rotation {
@@ -21,10 +21,10 @@ instances {
 }
 instances {
   id: "enemy1"
-  prototype: "/main/enemy.go"
+  prototype: "/enemy/enemy.go"
   position {
-    x: 994.0
-    y: 134.0
+    x: 453.0
+    y: 599.0
     z: 0.0
   }
   rotation {
@@ -41,10 +41,10 @@ instances {
 }
 instances {
   id: "enemy2"
-  prototype: "/main/enemy.go"
+  prototype: "/enemy/enemy.go"
   position {
-    x: 484.0
-    y: 592.0
+    x: 1091.0
+    y: 157.0
     z: 0.0
   }
   rotation {
@@ -61,10 +61,10 @@ instances {
 }
 instances {
   id: "player"
-  prototype: "/main/player.go"
+  prototype: "/player/player.go"
   position {
-    x: 608.0
-    y: 358.0
+    x: 633.0
+    y: 363.0
     z: 0.0
   }
   rotation {
