@@ -1,6 +1,6 @@
 components {
-  id: "enemy"
-  component: "/main/enemy.script"
+  id: "player"
+  component: "/main/player.script"
   position {
     x: 0.0
     y: 0.0
@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"logo\"\n"
+  data: "default_animation: \"logo_blue\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -36,8 +36,8 @@ embedded_components {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
+    x: 0.1
+    y: 0.1
     z: 1.0
   }
 }
@@ -49,9 +49,8 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"enemy\"\n"
+  "group: \"player\"\n"
   "mask: \"enemy\"\n"
-  "mask: \"player\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"
@@ -70,7 +69,7 @@ embedded_components {
   "    count: 1\n"
   "    id: \"sphere\"\n"
   "  }\n"
-  "  data: 30.0\n"
+  "  data: 22.5\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"

@@ -4,6 +4,7 @@ local z_axis = vmath.vector3(0, 0, 1)
 function init(self)
 	self.direction = vmath.vector3()
 	self.deviation = vmath.quat()
+	self.correction = vmath.vector3()
 	set_new_deviation(self)
 	set_new_direction(self)
 end
@@ -11,6 +12,7 @@ end
 function update(self, dt)
 	set_new_direction(self)
 	go.set_position(go.get_position() + self.direction*speed*dt)
+	self.correction = vmath.vector3()
 end
 
 function set_new_deviation(self)
@@ -25,4 +27,17 @@ function set_new_direction(self)
 		self.direction = vmath.normalize(self.direction)
 	end
 	self.direction = vmath.rotate(self.deviation, self.direction)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		if message.distance > 0 then
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				local comp = (message.distance - message.distance * proj) * message.normal
+				go.set_position(go.get_position() + comp)
+				self.correction = self.correction + comp
+			end
+		end
+	end
 end
