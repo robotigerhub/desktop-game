@@ -4,6 +4,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.direction = vmath.vector3()
 	self.correction = vmath.vector3()
+	self.init_pos = go.get_position()
 end
 
 function on_input(self, action_id, action)
@@ -31,6 +32,8 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
-		msg.post("main:/common#main", "player_caught")
+		msg.post("/common#main", "player_caught")
+	elseif message_id == hash("reset_position") then
+		go.set_position(self.init_pos)
 	end
 end

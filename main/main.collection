@@ -1,4 +1,84 @@
 name: "main"
+instances {
+  id: "enemy"
+  prototype: "/enemy/enemy.go"
+  position {
+    x: 166.0
+    y: 155.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "enemy1"
+  prototype: "/enemy/enemy.go"
+  position {
+    x: 453.0
+    y: 599.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "enemy2"
+  prototype: "/enemy/enemy.go"
+  position {
+    x: 1091.0
+    y: 157.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "player"
+  prototype: "/player/player.go"
+  position {
+    x: 633.0
+    y: 363.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "common"
@@ -34,24 +114,6 @@ embedded_instances {
   "    x: 0.0\n"
   "    y: 0.0\n"
   "    z: -0.5\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collectionproxy\"\n"
-  "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/game/game.collection\\\"\\n"
-  "exclude: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"

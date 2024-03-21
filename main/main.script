@@ -1,15 +1,13 @@
+local gos_ids = {"/player", "/enemy", "/enemy1", "/enemy2"}
+
 function init(self)
 	msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
-	msg.post(".", "acquire_input_focus")
-	msg.post("#collectionproxy", "load")
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("player_caught") then
-		msg.post("#collectionproxy", "unload")
-	elseif message_id == hash("proxy_unloaded") then
-		msg.post("#collectionproxy", "load")
-	elseif message_id == hash("proxy_loaded") then
-		msg.post("#collectionproxy", "enable")
+		for i,v in ipairs(gos_ids) do
+			msg.post(v, "reset_position")
+		end
 	end
 end

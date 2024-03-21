@@ -6,6 +6,7 @@ function init(self)
 	self.direction = vmath.vector3()
 	self.deviation = vmath.quat()
 	self.correction = vmath.vector3()
+	self.init_pos = go.get_position()
 	set_new_deviation(self)
 end
 
@@ -40,5 +41,7 @@ function on_message(self, message_id, message, sender)
 				self.correction = self.correction + comp
 			end
 		end
+	elseif message_id == hash("reset_position") then
+		go.set_position(self.init_pos)
 	end
 end
